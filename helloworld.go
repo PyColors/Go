@@ -7,6 +7,7 @@ type Salutation struct {
 	greeting string
 }
 
+// type + name
 func Greet(salutation Salutation) {
 	// 2 multiples possibilities
 	message, alternate := CreateMessage(salutation.name, salutation.greeting)
