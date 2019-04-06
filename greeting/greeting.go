@@ -10,15 +10,15 @@ type Salutation struct {
 // Declaring a Function Type - do Printer
 type Printer func(string)
 
-// type + name
+// type + nam		e
 func Greet(salutation Salutation, do Printer, isFormal bool) {
 	// 2 multiples possibilities
 	message, alternate := CreateMessage(salutation.Name, salutation.Greeting)
 	if prefix := "Mr "; isFormal {
 		do(prefix + message)
+	} else {
+		do(alternate)
 	}
-
-	do(alternate)
 }
 
 // Having 2 returns string values (message string, alternate string)
