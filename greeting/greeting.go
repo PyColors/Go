@@ -14,8 +14,8 @@ type Printer func(string)
 func Greet(salutation Salutation, do Printer, isFormal bool) {
 	// 2 multiples possibilities
 	message, alternate := CreateMessage(salutation.Name, salutation.Greeting)
-	if isFormal {
-		do(message)
+	if prefix := "Mr "; isFormal {
+		do(prefix + message)
 	}
 
 	do(alternate)
@@ -24,7 +24,7 @@ func Greet(salutation Salutation, do Printer, isFormal bool) {
 // Having 2 returns string values (message string, alternate string)
 func CreateMessage(name, greeting string) (message string, alternate string) {
 	// len() as length
-	fmt.Println(len(greeting))
+	//fmt.Println(len(greeting))
 	message = greeting + " " + name
 	alternate = "Hey" + name
 	return
