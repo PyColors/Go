@@ -10,15 +10,30 @@ type Salutation struct {
 // Declaring a Function Type - do Printer
 type Printer func(string)
 
-// type + nam		e
+// type + name
 func Greet(salutation Salutation, do Printer, isFormal bool) {
 	// 2 multiples possibilities
 	message, alternate := CreateMessage(salutation.Name, salutation.Greeting)
-	if prefix := "Mr "; isFormal {
+	if prefix := GetPrefix(salutation.Name); isFormal {
 		do(prefix + message)
 	} else {
 		do(alternate)
 	}
+}
+
+func GetPrefix(name string) (prefix string) {
+	switch name {
+	case "Bob":
+		prefix = "Mr "
+	case "Joe":
+		prefix = "Sir "
+	case "Maria":
+		prefix = "Mrs "
+	default:
+		prefix = "Dude"
+	}
+
+	return
 }
 
 // Having 2 returns string values (message string, alternate string)
