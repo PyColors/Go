@@ -25,7 +25,7 @@ func GetPrefix(name string) (prefix string) {
 	switch name {
 	case "Bob":
 		prefix = "Mr "
-	case "Joe":
+	case "Joe", "Lisa":
 		prefix = "Sir "
 	case "Maria":
 		prefix = "Mrs "
