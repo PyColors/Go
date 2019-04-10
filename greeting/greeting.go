@@ -22,12 +22,12 @@ func Greet(salutation Salutation, do Printer, isFormal bool) {
 }
 
 func GetPrefix(name string) (prefix string) {
-	switch name {
-	case "Bob":
+	switch {
+	case name == "Bob":
 		prefix = "Mr "
-	case "Joe", "Lisa":
-		prefix = "Sir "
-	case "Maria":
+	case name == "Joe", name == "Lisa", len(name) > 10:
+		prefix = "Dr "
+	case name == "Maria":
 		prefix = "Mrs "
 	default:
 		prefix = "Dude"
