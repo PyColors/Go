@@ -16,7 +16,10 @@ func Greet(salutation Salutation, do Printer, isFormal bool, times int) {
 	message, alternate := CreateMessage(salutation.Name, salutation.Greeting)
 
 	i := 0
-	for i < times {
+	for {
+		if i >= times {
+			break
+		}
 		if prefix := GetPrefix(salutation.Name); isFormal {
 			do(prefix + message)
 		} else {
