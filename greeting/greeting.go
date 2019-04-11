@@ -11,27 +11,20 @@ type Salutation struct {
 type Printer func(string)
 
 // type + name
-func Greet(salutation Salutation, do Printer, isFormal bool, times int) {
-	// 2 multiples possibilities
-	message, alternate := CreateMessage(salutation.Name, salutation.Greeting)
+func Greet(salutation []Salutation, do Printer, isFormal bool, times int) {
 
-	i := 0
-	for {
-		if i >= times {
-			break
-		}
+	// Go to salutation collection and then, populate i and s
+	// i = index, s = the current value
+	// _ to skip i
+	for _, s := range salutation {
+		// 2 multiples possibilities
+		message, alternate := CreateMessage(s.Name, s.Greeting)
 
-		if i%2 == 0 {
-			i++
-			continue
-		}
-
-		if prefix := GetPrefix(salutation.Name); isFormal {
+		if prefix := GetPrefix(s.Name); isFormal {
 			do(prefix + message)
 		} else {
 			do(alternate)
 		}
-		i++
 	}
 }
 
