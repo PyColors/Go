@@ -29,6 +29,10 @@ func Greet(salutation []Salutation, do Printer, isFormal bool, times int) {
 }
 
 func GetPrefix(name string) (prefix string) {
+
+	var prefixMap map[string]string
+	prefixMap = make(map[string]string)
+
 	switch {
 	case name == "Bob":
 		prefix = "Mr "
