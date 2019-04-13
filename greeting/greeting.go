@@ -40,6 +40,12 @@ func GetPrefix(name string) (prefix string) {
 	// Update key in the map, if he excites
 	prefixMap["Joe"] = "Jr "
 
+	// Info: this the old way to delete a key in the map
+	// prefixMap["Maria"] = "", false
+
+	// Delete key in the map new way
+	delete(prefixMap, "Maria")
+
 	return prefixMap[name]
 
 }
