@@ -37,16 +37,26 @@ func GetPrefix(name string) (prefix string) {
 		"Maria": "Mrs ",
 	}
 
-	// Update key in the map, if he excites
+	// Update key in the map, if he exists
 	prefixMap["Joe"] = "Jr "
 
 	// Info: this the old way to delete a key in the map
 	// prefixMap["Maria"] = "", false
 
-	// Delete key in the map new way
+	// Delete a key in the map in a new way
+	// Delete would work even if the value is in the map or not
+	// Don't need to verify in before doing a delete or an update with `Go`
 	delete(prefixMap, "Maria")
 
-	return prefixMap[name]
+	// As we can have multiple return in `Go`
+	// exists is a boolean, he is actually checking if the value exists
+	// Don't need to write if `exists === true` or `...false` as he a boolean itself
+	if value, exists := prefixMap[name]; exists {
+		return value
+	}
+
+	// return default value
+	return "Dude "
 
 }
 
