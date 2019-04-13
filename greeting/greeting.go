@@ -33,18 +33,13 @@ func GetPrefix(name string) (prefix string) {
 	var prefixMap map[string]string
 	prefixMap = make(map[string]string)
 
-	switch {
-	case name == "Bob":
-		prefix = "Mr "
-	case name == "Joe", name == "Lisa", len(name) > 10:
-		prefix = "Dr "
-	case name == "Maria":
-		prefix = "Mrs "
-	default:
-		prefix = "Dude"
-	}
+	prefixMap["Bob"] = "Mr "
+	prefixMap["Joe"] = "Dr "
+	prefixMap["Lisa"] = "Dr "
+	prefixMap["Maria"] = "Mrs "
 
-	return
+	return prefixMap[name]
+
 }
 
 // Having 2 returns string values (message string, alternate string)
