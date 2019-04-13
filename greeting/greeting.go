@@ -30,6 +30,9 @@ func Greet(salutation []Salutation, do Printer, isFormal bool, times int) {
 
 func GetPrefix(name string) (prefix string) {
 
+	// Simple way to write a map
+	// Easy to read and maintain
+	// key is a string and the type too
 	prefixMap := map[string]string{
 		"Bob":   "Mr ",
 		"Joe":   "Dr ",
