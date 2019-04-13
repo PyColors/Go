@@ -37,6 +37,9 @@ func GetPrefix(name string) (prefix string) {
 		"Maria": "Mrs ",
 	}
 
+	// Update key in the map, if he excites
+	prefixMap["Joe"] = "Jr "
+
 	return prefixMap[name]
 
 }
