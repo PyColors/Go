@@ -27,13 +27,15 @@ func main() {
 
 	// Augment the capacity of the slice
 	// slice = append(slice, slice...) special one to expand the slice
-	slice = append(slice, greeting.Salutation{"Frank", "Hi"})
+
+	// Deleting from a Slice :1 2:
+	slice = append(slice[:1], slice[2:]...)
 
 	// Just pick up Joe...
 	// 1 is the start of the index - if empty, will be the index 0
 	// 2 is the end of the index - if empty, going to be the same as that slice
 	// len(slice) short way to get everything after start of the index
-	slice = slice[1:len(slice)]
+	// slice = slice[1:len(slice)]
 
 	greeting.Greet(slice, greeting.CreatePrintFuction("??"), true, 6)
 }
