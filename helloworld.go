@@ -17,13 +17,19 @@ func main() {
 	//s[0] = 23
 
 	// Short Slice syntax
-	s := []int{1, 10, 500, 25}
+	//s := []int{1, 10, 500, 25}
 
 	slice := []greeting.Salutation{
 		{"Bob", "Hello"},
 		{"Joe", "Hey"},
 		{"Maria", "Why?"},
 	}
+
+	// Just pick up Joe...
+	// 1 is the start of the index - if empty, will be the index 0
+	// 2 is the end of the index - if empty, going to be the same as that slice
+	// len(slice) short way to get everything after start of the index
+	slice = slice[1:len(slice)]
 
 	greeting.Greet(slice, greeting.CreatePrintFuction("??"), true, 6)
 }
