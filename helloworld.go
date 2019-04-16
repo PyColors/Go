@@ -25,6 +25,10 @@ func main() {
 		{"Maria", "Why?"},
 	}
 
+	// Augment the capacity of the slice
+	// slice = append(slice, slice...) special one to expand the slice
+	slice = append(slice, greeting.Salutation{"Frank", "Hi"})
+
 	// Just pick up Joe...
 	// 1 is the start of the index - if empty, will be the index 0
 	// 2 is the end of the index - if empty, going to be the same as that slice
