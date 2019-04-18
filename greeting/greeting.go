@@ -7,6 +7,13 @@ type Salutation struct {
 	Greeting string
 }
 
+// Rename the salutation
+// make a * as a Pointer to go to Salutation struct and,
+// a change the name in the original Object
+func (salutation *Salutation) Rename(newName string) {
+	salutation.Name = newName
+}
+
 // Type of Salutations by nameType of slice of salutation
 type Salutations []Salutation
 

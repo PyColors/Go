@@ -37,6 +37,9 @@ func main() {
 	// len(slice) short way to get everything after start of the index
 	// slice = slice[1:len(slice)]
 
+	// Rename from the original Object from a * (Pointer)
+	salutations[0].Rename("John")
+
 	// New method
 	salutations.Greet(greeting.CreatePrintFuction("?"), true, 6)
 	// greeting.Greet(salutations, greeting.CreatePrintFuction("??"), true, 6)
