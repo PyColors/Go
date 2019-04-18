@@ -2,6 +2,11 @@ package main
 
 import "./greeting"
 
+// RenameToFrog func
+func RenameToFrog(r greeting.Renamable) {
+	r.Rename("Frog")
+}
+
 func main() {
 
 	// var s = greeting.Salutation{"Lisa", "Hello"}
@@ -37,8 +42,13 @@ func main() {
 	// len(slice) short way to get everything after start of the index
 	// slice = slice[1:len(slice)]
 
-	// Rename from the original Object from a * (Pointer)
+	// Rename from the original Object from a `*` (Pointer)
 	salutations[0].Rename("John")
+
+	// salutations has a pointer receiver `*`
+	// Deference this with `&` and,
+	// Rename the first name of salutation to newName pass in RenameToFrog func.
+	RenameToFrog(&salutations[0])
 
 	// New method
 	salutations.Greet(greeting.CreatePrintFuction("?"), true, 6)

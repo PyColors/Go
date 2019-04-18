@@ -7,6 +7,13 @@ type Salutation struct {
 	Greeting string
 }
 
+// Type of interface and define a Rename method
+// Any type that implement salutation method will
+// implement that interface
+type Renamable interface {
+	Rename(newName string)
+}
+
 // Rename the salutation
 // make a * as a Pointer to go to Salutation struct and,
 // a change the name in the original Object
