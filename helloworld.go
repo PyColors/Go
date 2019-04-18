@@ -19,7 +19,7 @@ func main() {
 	// Short Slice syntax
 	//s := []int{1, 10, 500, 25}
 
-	slice := []greeting.Salutation{
+	salutations := greeting.Salutations{
 		{"Bob", "Hello"},
 		{"Joe", "Hey"},
 		{"Maria", "Why?"},
@@ -29,7 +29,7 @@ func main() {
 	// slice = append(slice, slice...) special one to expand the slice
 
 	// Deleting from a Slice :1 2:
-	slice = append(slice[:1], slice[2:]...)
+	// slice = append(slice[:1], slice[2:]...)
 
 	// Just pick up Joe...
 	// 1 is the start of the index - if empty, will be the index 0
@@ -37,5 +37,7 @@ func main() {
 	// len(slice) short way to get everything after start of the index
 	// slice = slice[1:len(slice)]
 
-	greeting.Greet(slice, greeting.CreatePrintFuction("??"), true, 6)
+	// New method
+	salutations.Greet(greeting.CreatePrintFuction("?"), true, 6)
+	// greeting.Greet(salutations, greeting.CreatePrintFuction("??"), true, 6)
 }

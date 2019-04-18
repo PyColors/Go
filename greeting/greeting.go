@@ -7,16 +7,19 @@ type Salutation struct {
 	Greeting string
 }
 
+// Type of Salutations by nameType of slice of salutation
+type Salutations []Salutation
+
 // Declaring a Function Type - do Printer
 type Printer func(string)
 
-// type + name
-func Greet(salutation []Salutation, do Printer, isFormal bool, times int) {
+// Method of salutation type
+func (salutations Salutations) Greet(do Printer, isFormal bool, times int) {
 
 	// Go to salutation collection and then, populate i and s
 	// i = index, s = the current value
 	// _ to skip i
-	for _, s := range salutation {
+	for _, s := range salutations {
 		// 2 multiples possibilities
 		message, alternate := CreateMessage(s.Name, s.Greeting)
 
