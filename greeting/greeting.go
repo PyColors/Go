@@ -80,6 +80,22 @@ func GetPrefix(name string) (prefix string) {
 
 }
 
+// switch on the x type
+// `interface{}` : Empty Interface
+// any single type implements this empty interface
+func TypeSwithTest(x interface{}) {
+	switch x.(type) {
+	case int:
+		fmt.Println("int")
+	case string:
+		fmt.Sprint("string")
+	case Salutation:
+		fmt.Sprint("salutation")
+	default:
+		fmt.Sprint("unknown")
+	}
+}
+
 // Having 2 returns string values (message string, alternate string)
 func CreateMessage(name, greeting string) (message string, alternate string) {
 	// len() as length
