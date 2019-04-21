@@ -21,6 +21,19 @@ func (salutation *Salutation) Rename(newName string) {
 	salutation.Name = newName
 }
 
+// Implement Write interface
+// `*` to *Salutation
+func (salutation *Salutation) Write(p []byte) (n int, err error) {
+	// Convert `byte` to a string
+	s := string(p)
+	salutation.Rename(s)
+	// return back `n` and `err`
+	// n is how much he returns
+	n = len(s)
+	err = nil
+	return
+}
+
 // Type of Salutations by nameType of slice of salutation
 type Salutations []Salutation
 
