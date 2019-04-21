@@ -1,6 +1,9 @@
 package main
 
-import "./greeting"
+import (
+	"./greeting"
+	"fmt"
+)
 
 // RenameToFrog func
 func RenameToFrog(r greeting.Renamable) {
@@ -43,13 +46,15 @@ func main() {
 	// slice = slice[1:len(slice)]
 
 	// Rename from the original Object from a `*` (Pointer)
-	salutations[0].Rename("John")
+	// salutations[0].Rename("John")
 
 	// salutations has a pointer receiver `*`
 	// Deference this with `&` and,
 	// Rename the first name of salutation to newName pass in RenameToFrog func.
-	RenameToFrog(&salutations[0])
+	// RenameToFrog(&salutations[0])
 
+	// Have the ability to use Salutation Type as an argument to `Fprintf`
+	fmt.Fprintf(&salutations[0], "The count is %d", 10)
 	// New method
 	salutations.Greet(greeting.CreatePrintFuction("?"), true, 6)
 	// greeting.Greet(salutations, greeting.CreatePrintFuction("??"), true, 6)

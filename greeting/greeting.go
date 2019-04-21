@@ -2,6 +2,8 @@ package greeting
 
 import "fmt"
 
+// Salutation type
+// he passes to `Fprintf` as an argument
 type Salutation struct {
 	Name     string
 	Greeting string
