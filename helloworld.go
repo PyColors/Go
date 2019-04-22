@@ -3,6 +3,7 @@ package main
 import (
 	"./greeting"
 	"fmt"
+	"time"
 )
 
 // RenameToFrog func
@@ -55,7 +56,14 @@ func main() {
 
 	// Have the ability to use Salutation Type as an argument to `Fprintf`
 	fmt.Fprintf(&salutations[0], "The count is %d", 10)
+
+	// Simple Goroutines `go`
+	go salutations.Greet(greeting.CreatePrintFuction("<C>"), true, 6)
+
 	// New method
 	salutations.Greet(greeting.CreatePrintFuction("?"), true, 6)
 	// greeting.Greet(salutations, greeting.CreatePrintFuction("??"), true, 6)
+
+	// Get enough time to run the Goroutines `go`
+	time.Sleep(100 * time.Millisecond)
 }
