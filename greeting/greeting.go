@@ -60,6 +60,17 @@ func (salutations Salutations) Greet(do Printer, isFormal bool, times int) {
 	}
 }
 
+// Method to loop through all the salutation and send each one to the Channel
+func (salutations Salutations) ChannelGreeter(c chan Salutation) {
+	// first value it's a `index` don't need that `_`
+	for _, s := range salutations {
+		// Send the salutation to the Channel
+		c <- s
+	}
+	// When the loop will finish we close
+	close(c)
+}
+
 func GetPrefix(name string) (prefix string) {
 
 	// Simple way to write a map

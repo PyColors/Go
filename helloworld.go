@@ -3,7 +3,6 @@ package main
 import (
 	"./greeting"
 	"fmt"
-	"time"
 )
 
 // RenameToFrog func
@@ -34,6 +33,8 @@ func main() {
 		{"Maria", "Why?"},
 	}
 
+	// This is a Goroutines that field the Channel
+
 	// Augment the capacity of the slice
 	// slice = append(slice, slice...) special one to expand the slice
 
@@ -57,34 +58,42 @@ func main() {
 	// Have the ability to use Salutation Type as an argument to `Fprintf`
 	fmt.Fprintf(&salutations[0], "The count is %d", 10)
 
+	// New Channel type of salutation
+	c := make(chan greeting.Salutation)
+	go salutations.ChannelGreeter(c)
+
+	for s := range c {
+		fmt.Println(s.Name)
+	}
+
 	// Channel
 	// `Buffered` of 2
 	// The `Buffered` control how much data can be store before we block
-	done := make(chan bool, 2)
+	//done := make(chan bool, 2)
 
 	// Simple Goroutines `go`
 	//  do to the greeting as a closure
-	go func() {
-		salutations.Greet(greeting.CreatePrintFuction("<C>"), true, 6)
-		// The value true going through on the chanel done by the arrow
-		// direction of the arrow is to the data
-		done <- true
-		time.Sleep(100 * time.Millisecond)
-		done <- true
-		fmt.Println("Done!")
-	}()
+	//go func() {
+	//	salutations.Greet(greeting.CreatePrintFuction("<C>"), true, 6)
+	//	// The value true going through on the chanel done by the arrow
+	//	// direction of the arrow is to the data
+	//	done <- true
+	//	time.Sleep(100 * time.Millisecond)
+	//	done <- true
+	//	fmt.Println("Done!")
+	//}()
 
 	// New method
-	salutations.Greet(greeting.CreatePrintFuction("?"), true, 6)
+	//salutations.Greet(greeting.CreatePrintFuction("?"), true, 6)
 	// greeting.Greet(salutations, greeting.CreatePrintFuction("??"), true, 6)
 
 	// Get enough time to run the Goroutines `go`
 	// time.Sleep(100 * time.Millisecond)
 
 	// Data
-	<-done
+	//<-done
 	// Adding time to be able to print "Done" even the Sleep into the anonymous function
-	for {
-		time.Sleep(100 * time.Millisecond)
-	}
+	//for {
+	//	time.Sleep(100 * time.Millisecond)
+	//}
 }
