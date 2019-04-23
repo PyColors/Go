@@ -3,6 +3,7 @@ package main
 import (
 	"./greeting"
 	"fmt"
+	"time"
 )
 
 // RenameToFrog func
@@ -62,12 +63,13 @@ func main() {
 	done := make(chan bool, 2)
 
 	// Simple Goroutines `go`
-	// anonymous function do to the greeting as a closure
+	//  do to the greeting as a closure
 	go func() {
 		salutations.Greet(greeting.CreatePrintFuction("<C>"), true, 6)
 		// The value true going through on the chanel done by the arrow
 		// direction of the arrow is to the data
 		done <- true
+		time.Sleep(100 * time.Millisecond)
 		done <- true
 		fmt.Println("Done!")
 	}()
@@ -81,4 +83,8 @@ func main() {
 
 	// Data
 	<-done
+	// Adding time to be able to print "Done" even the Sleep into the anonymous function
+	for {
+		time.Sleep(100 * time.Millisecond)
+	}
 }
