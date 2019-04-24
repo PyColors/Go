@@ -58,13 +58,46 @@ func main() {
 	// Have the ability to use Salutation Type as an argument to `Fprintf`
 	fmt.Fprintf(&salutations[0], "The count is %d", 10)
 
-	// New Channel type of salutation
+	// Channel type of salutation
 	c := make(chan greeting.Salutation)
+
+	// Second Channel
+	c2 := make(chan greeting.Salutation)
+
+	// Goroutines
 	go salutations.ChannelGreeter(c)
 
-	for s := range c {
-		fmt.Println(s.Name)
+	// Second Goroutines
+	go salutations.ChannelGreeter(c2)
+
+	// Switch to determine what Channel are ready and print out from particular Channel
+	// This infinite loop keep doing this select statement
+	// If the Select statement can't read to one case he will be the default if there is one
+	for {
+		// Select statement
+		select {
+		case s, ok := <-c:
+			if ok {
+				fmt.Println(s, ":1")
+			} else {
+				return
+			}
+
+		case s, ok := <-c2:
+			if ok {
+				fmt.Println(s, ":2")
+			} else {
+				return
+			}
+
+		default:
+			fmt.Println("Waiting...")
+		}
 	}
+
+	//for s := range c {
+	//	fmt.Println(s.Name)
+	//}
 
 	// Channel
 	// `Buffered` of 2
